@@ -21,6 +21,8 @@
 
 #include <exception>
 #include <optional>
+#include <type_traits>
+#include <utility>
 
 namespace realm::util {
 
@@ -62,7 +64,11 @@ public:
     }
 
     static_assert(noexcept(std::declval<H>()()), "Handler must be nothrow executable");
+#if defined(__cpp_lib_is_nothrow_destructible)
     static_assert(std::is_nothrow_destructible<H>::value, "Handler must be nothrow destructible");
+#else
+    static_assert(noexcept(std::declval<H&>().~H()), "Handler must be nothrow destructible");
+#endif
 
 private:
     std::optional<H> m_handler;

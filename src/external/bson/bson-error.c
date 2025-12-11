@@ -134,6 +134,15 @@ bson_strerror_r (int err_code,                    /* IN */
    // The behavior (of `strerror_l`) is undefined if the locale argument to
    // `strerror_l()` is the special locale object LC_GLOBAL_LOCALE or is not a
    // valid locale object handle.
+   #if defined(__ANDROID__)
+      // Android doesn't have strerror_l or full locale support
+      char error_buf[256];
+      if (strerror_r(err_code, error_buf, sizeof(error_buf)) == 0) {
+         ret = error_buf;
+      } else {
+         ret = NULL;
+      }
+   #else
    locale_t locale = uselocale ((locale_t) 0);
    // No need to test for error (it can only be [EINVAL]).
    if (locale == LC_GLOBAL_LOCALE) {
@@ -166,6 +175,7 @@ bson_strerror_r (int err_code,                    /* IN */
       // Could not obtain a valid `locale_t` object to satisfy `strerror_l`.
       // Fallback to `bson_strncpy` below.
    }
+   #endif
 #elif defined(_GNU_SOURCE)
    // Unlikely, but continue supporting use of GNU extension in cases where the
    // C Driver is being built without _XOPEN_SOURCE=700.
