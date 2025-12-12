@@ -6,6 +6,8 @@
 
 ![Realm](doc/logo.png)
 
+### A fork of [Realm-core](<https://github.com/realm/realm-core>) as of Oct 28 2025, Version 14.14.0, this project aims to update on crucial modern developments.
+
 Realm is a mobile database that runs directly inside phones, tablets or wearables - check out [realm.io](https://realm.io).
 
 This repository holds the source code for the core database component used by all the Realm Mobile Database products:
