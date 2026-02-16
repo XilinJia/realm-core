@@ -26,6 +26,30 @@
 
 ----------------------------------------------
 
+# 14.14.2
+
+### Enhancements
+
+* None.
+
+### Fixed
+
+* changed android build options for AGP 8.13+
+
+### Breaking changes
+
+* None.
+
+### Compatibility
+
+* None.
+
+-----------
+
+### Internals
+
+* None.
+
 # 14.14.1
 
 ### Enhancements
