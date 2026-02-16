@@ -156,10 +156,10 @@ functions:
           fi
 
           GENERATOR="${cmake_generator}"
-          # if [ -z "${cmake_generator|}" ]; then
-          #     GENERATOR="Ninja Multi-Config"
-          #     set_cmake_var generator_vars CMAKE_MAKE_PROGRAM PATH "${ninja|ninja}"
-          # fi
+          if [ -z "${cmake_generator|}" ]; then
+              GENERATOR="Ninja Multi-Config"
+              set_cmake_var generator_vars CMAKE_MAKE_PROGRAM PATH "${ninja|ninja}"
+          fi
 
           if [ -n "${cmake_generator_platform|}" ]; then
             set_cmake_var realm_vars CMAKE_GENERATOR_PLATFORM STRING "${cmake_generator_platform}"

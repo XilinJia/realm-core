@@ -92,8 +92,8 @@ if [[ "${OS}" == "android" ]]; then
              -D CMAKE_TOOLCHAIN_FILE="./tools/cmake/android.toolchain.cmake" \
              -D REALM_ENABLE_ENCRYPTION=On \
              -D CPACK_SYSTEM_NAME="Android-${ARCH}" \
-#              -D CMAKE_MAKE_PROGRAM=ninja \
-#              -G Ninja \
+             -D CMAKE_MAKE_PROGRAM=ninja \
+             -G Ninja \
              ${CMAKE_FLAGS} \
              ..
 
